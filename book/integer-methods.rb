@@ -1,3 +1,5 @@
-50.upto(55) do |i|
-    puts "#{i} - #{i.even?}"
+1.upto(5) do |i|
+    1.upto(5) do |j|
+        puts "SHINE #{i}, HOLD #{j}"
+    end
 end
