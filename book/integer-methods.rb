@@ -1,1 +1,3 @@
-50.upto(55) { |i| puts "#{i}" }
+50.upto(55) do |i|
+    puts "#{i} - #{i.even?}"
+end
