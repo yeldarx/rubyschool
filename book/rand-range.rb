@@ -1,3 +1,1 @@
-# loop do
-    puts rand 500...510
-    # end
+puts rand 2.0...4.0
