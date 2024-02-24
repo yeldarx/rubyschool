@@ -22,10 +22,21 @@ def boom
         @machines -= diff
         vic_checker
         puts "#{diff} машин уничтожено!"
+
+        @machines += diff
+
+        puts "#{diff} машин создано!"
+
+
     else
         @humans -= diff
         vic_checker
         puts "#{diff} людей погибло..."
+
+        @humans += diff
+
+        puts "#{diff} людей родилось..."
+        
     end
 end
 
