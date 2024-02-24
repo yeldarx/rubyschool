@@ -18,14 +18,16 @@ end
 
 def boom
     diff = rand(1..5)
+    good_diff = rand(1..5)
+
     if luck?
         @machines -= diff
         vic_checker
         puts "#{diff} машин уничтожено!"
 
-        @machines += diff
+        @machines += good_diff
 
-        puts "#{diff} машин создано!"
+        puts "#{good_diff} машин создано!"
 
 
     else
@@ -33,9 +35,9 @@ def boom
         vic_checker
         puts "#{diff} людей погибло..."
 
-        @humans += diff
+        @humans += good_diff
 
-        puts "#{diff} людей родилось..."
+        puts "#{good_diff} людей родилось..."
         
     end
 end
