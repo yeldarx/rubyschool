@@ -30,16 +30,16 @@ def boom
 end
 
 def random_city
-    dice = rand(1..5)
-    if dice == 1
+    case rand(1..5)
+    when 1
         'Shmaqa City'
-    elsif dice == 2
+    when 2
         'Fioresto City'
-    elsif dice == 3
+    when 3
         'Juasmzo City'
-    elsif dice == 4
+    when 4
         'Pobafgic City'
-    else dice == 5
+    else
         'Dieajuyso City'
     end
 end
