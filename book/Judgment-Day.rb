@@ -1,28 +1,20 @@
 @humans = 20
 @machines = 20
 
-def luck?
+def luck? # Этот момент все решает.
     rand(0..1) == 1
-end
-
-def vic_checker
-    if @humans <= 0
-        puts "Победили машины в количестве #{@machines} машин"
-        exit
-    elsif @machines <= 0
-        puts "Победили люди в количестве #{@humans} людей"
-        exit
-    end
 end
 
 
 def boom
-    diff = rand(1..5)
-    good_diff = rand(1..5)
 
-    if luck?
+    diff = rand(1..5) # уничтожение, рандом
+
+    good_diff = rand(1..5) # появление, рандом
+
+    if luck? 
         @machines -= diff
-        vic_checker
+        check_victiory
         puts "#{diff} машин уничтожено!"
 
         @machines += good_diff
@@ -32,7 +24,7 @@ def boom
 
     else
         @humans -= diff
-        vic_checker
+        check_victiory
         puts "#{diff} людей погибло..."
 
         @humans += good_diff
@@ -83,13 +75,19 @@ def event3
     boom
 end
 
-def check_victiory?
-        false
+def check_victiory
+        if @humans <= 0
+            puts "Победили машины в количестве #{@machines} машин"
+            exit
+        elsif @machines <= 0
+            puts "Победили люди в количестве #{@humans} людей"
+            exit
+        end
 end
 
 
 loop do
-    if check_victiory?
+    if check_victiory
         exit
     end
 
