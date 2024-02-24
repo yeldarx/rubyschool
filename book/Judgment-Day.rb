@@ -80,14 +80,14 @@ loop do
         exit
     end
 
-    dice = rand (1..3)
+    case rand(1..3)
 
-    if dice == 1
+    when 1
         event1
-    elsif dice == 2
+    when 2
         event2
-    elsif dice == 3 # else
-        event3   
+    when 3
+        event3
     end
     
     stats
