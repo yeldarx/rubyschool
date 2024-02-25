@@ -1,12 +1,13 @@
-@humans = 20
-@machines = 20
+@humans = 10
+@machines = 10
 
 def luck? # Этот момент решает кого становится меньше.
     rand(0..1) == 1 # true - машин становится меньше, false - людей стало меньше.
 end
 
 def progress_bar
-    4.times do
+    times_rand = rand(1..3)
+    times_rand.times do
         print "/\r"
         sleep 0.1
     
@@ -70,10 +71,17 @@ def random_city
     end
 end
 
+def next_game_bar
+    20.times do
+        print "* "
+        sleep 0.1
+        end
+        puts ""
+end
 
 def stats
     puts "Осталось #{@humans} людей и #{@machines} машин."
-    progress_bar
+    next_game_bar
 end
 
 def event1
