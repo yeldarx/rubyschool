@@ -6,7 +6,7 @@ def luck? # Этот момент решает кого становится м�
 end
 
 def progress_bar
-    loop do
+    4.times do
         print "/\r"
         sleep 0.1
     
@@ -19,6 +19,7 @@ def progress_bar
         print "|\r"
         sleep 0.1 
     end 
+
 end
 
 def boom
@@ -32,19 +33,24 @@ def boom
         check_victiory
         puts "#{diff} машин уничтожено!"
 
-        @machines += good_diff
+        progress_bar
 
+        @machines += good_diff
         puts "#{good_diff} машин создано!"
+
+        progress_bar
 
 
     else
         @humans -= diff
         check_victiory
         puts "#{diff} людей погибло..."
+        progress_bar
 
         @humans += good_diff
 
         puts "#{good_diff} людей родилось..."
+        progress_bar
         
     end
 end
@@ -64,37 +70,37 @@ def random_city
     end
 end
 
-def random_sleep
-    sleep rand(1..1.5)
-end
 
 def stats
     puts "Осталось #{@humans} людей и #{@machines} машин."
+    progress_bar
 end
 
 def event1
     puts "Запущена ракета по городу #{random_city}"
-    random_sleep
+    progress_bar
     boom
 end
 
 def event2
     puts "Применено радиоактивное оружие в городе #{random_city}"
-    random_sleep
+    progress_bar
     boom
 end
 
 def event3
     puts "Группа солдат прорывает оборону противника в городе #{random_city}"
-    random_sleep
+    progress_bar
     boom
 end
 
 def check_victiory
         if @humans <= 0
+            progress_bar
             puts "Победили машины в количестве #{@machines} машин"
             exit
         elsif @machines <= 0
+            progress_bar
             puts "Победили люди в количестве #{@humans} людей"
             exit
         end
@@ -117,6 +123,5 @@ loop do
     end
     
     stats
-    random_sleep
 
 end
