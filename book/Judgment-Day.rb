@@ -5,6 +5,21 @@ def luck? # Этот момент решает кого становится м�
     rand(0..1) == 1 # true - машин становится меньше, false - людей стало меньше.
 end
 
+def progress_bar
+    loop do
+        print "/\r"
+        sleep 0.1
+    
+        print "-\r"
+        sleep 0.1
+        
+        print "\\\r"
+        sleep 0.1
+    
+        print "|\r"
+        sleep 0.1 
+    end 
+end
 
 def boom
 
