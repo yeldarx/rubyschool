@@ -1,47 +1,70 @@
-loop do 
-    robot = rand(1..3)  # 1 == R
-                        # 2 == S
-                        # 3 == P
+score = 0
 
-    print "(R)ock? (S)cissor? (P)aper? "
-    s = gets.strip.capitalize
+def champ(score)
+
+    if score >= 50
+        puts "HUMAN is CHAMPION"
+        exit
+        elsif score <= -50
+            puts "ROBOT is CHAMPION"
+            exit
+    end
+    sleep 1
+end
+
+def check(score)
+    puts "Score is #{score}"
+    champ(score)
+end
+
+
+
+def win(who, score)
+    case who
+    when :rob
+        puts "robot wins"
+        score -= rand(5..10)
+        check(score)
+    when :hum
+        puts "human wins"
+        score += rand(5..10)
+        check(score)
+    end
+    score
+end
+
+loop do 
+
+    game = [ :rock, :paper, :scissor ]
+
+    i = rand(0..2)
+    j = rand(0..2)
+    
+    human = game[i]
+    robot = game[j]
 
     case
-        when s == 'R'
-            human = 1
+        when human == robot
+            puts "draw"
 
-        when s == 'S'
-            human = 2
+        when human == :rock && robot == :paper
+            score = win(:rob, score)
 
-        when s == 'P'
-            human = 3
-            else
-                print 'Wrong answer! '
-    end
+        when human == :rock && robot == :scissor
+            score = win(:hum, score)
+        
+        when human == :paper && robot == :scissor
+            score = win(:rob, score)
+        
+        when human == :paper && robot == :rock
+            score = win(:hum, score)
 
-    if robot == human
-        puts "Ничья! Robot – #{robot}, Human – #{human}"
-        
-        elsif robot == 2 && human == 1 
-            puts "Human wins! Robot - Scissor – #{robot}, Human - Rock – #{human}"
+        when human == :scissor && robot == :rock
+            score = win(:rob, score)
 
-        elsif robot == 3 && human == 1 
-            puts "Robot wins! Robot - Paper – #{robot}, Human - Rock – #{human}"
+        when human == :scissor && robot == :paper
+            score = win(:hum, score)
         
-        elsif robot == 1 && human == 2 
-            puts "Robot wins! Robot - Rock – #{robot}, Human - Scissor – #{human}"
-        
-        elsif robot == 1 && human == 3 
-            puts "Human win! Robot - Rock – #{robot}, Human - Paper – #{human}"
-        
-        elsif robot == 2 && human == 3
-            puts "Robot win! Robot - Scissor – #{robot}, Human - Paper – #{human}"
-        
-        elsif robot == 3 && human == 2
-            puts "Robot win! Robot - Paper – #{robot}, Human - Scissor – #{human}"
-
-            else
-                puts "Not set! Robot – #{robot}, Human – #{human}"
     end
 
 end
